@@ -10,7 +10,7 @@ header {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 10px;
+    padding: 2%; /* Använd procentuella värden för att göra det responsivt */
 }
 
 /* Navigationsmeny */
@@ -23,7 +23,7 @@ nav ul {
 
 nav li {
     display: inline;
-    margin-right: 10px;
+    margin-right: 10%; /* Använd procentuella värden för att göra det responsivt */
 }
 
 nav a {
@@ -33,7 +33,10 @@ nav a {
 
 /* Dagar */
 section {
-    margin: 20px;
+    margin: 2%; 
+    padding: 0%; 
+    box-sizing: border-box;
+    width: 98%; /* Använd procentuella värden för att anpassa bredden */
 }
 
 /* Sidfot */
@@ -41,8 +44,33 @@ footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    padding: 1%;
+    width: 98%;
+}
+
+.exercise-form {
+    display: table;
+}
+
+.exercise {
+    display: table-row;
+    padding: 2%; 
+    box-sizing: border-box;
+}
+
+.add-exercise {
+    margin-top: 2%; 
+}
+
+.save-button {
+    
+   
+}
+
+.save-button:hover {
+    background-color: #29c33e; 
+}
+
+.add-exercise:hover {
+    background-color: #1a6fca;
 }

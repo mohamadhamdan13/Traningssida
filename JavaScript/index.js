@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+//Lägg till övning
+
 $(function () {
   // Hantera klick på "Lägg till övning" för varje dag separat
   $(".add-exercise").on("click", function () {
@@ -35,6 +37,64 @@ $(function () {
       $form.append(newExercise);
   });
 });
+
+
+
+// Skapa en funktion för att spara data för en viss dag
+
+
+function saveDataForDay(dayId) {
+  var exercise1 = document.getElementById("exercise1-" + dayId).value;
+  var sets1 = document.getElementById("sets1-" + dayId).value;
+  var reps1 = document.getElementById("reps1-" + dayId).value;
+  var rest1 = document.getElementById("rest1-" + dayId).value;
+
+  var exerciseData = {
+    exercise1: exercise1,
+    sets1: sets1,
+    reps1: reps1,
+    rest1: rest1
+  };
+
+  var exerciseDataJSON = JSON.stringify(exerciseData);
+  localStorage.setItem("exerciseData-" + dayId, exerciseDataJSON);
+
+  alert("Dina övningsdata för " + dayId + " har sparats.");
+}
+
+
+document.getElementById("save-button-dag1").addEventListener("click", function() {
+  saveDataForDay("dag1");
+});;
+
+
+document.getElementById("save-button-dag2").addEventListener("click", function() {
+  saveDataForDay("dag2");
+});
+
+document.getElementById("save-button-dag3").addEventListener("click", function() {
+  saveDataForDay("dag3");
+});
+
+document.getElementById("save-button-dag4").addEventListener("click", function() {
+  saveDataForDay("dag4");
+});
+
+document.getElementById("save-button-dag5").addEventListener("click", function() {
+  saveDataForDay("dag5");
+});
+
+document.getElementById("save-button-dag6").addEventListener("click", function() {
+  saveDataForDay("dag6");
+});
+
+document.getElementById("save-button-dag7").addEventListener("click", function() {
+  saveDataForDay("dag7");
+});
+
+
+
+
 
 
 
