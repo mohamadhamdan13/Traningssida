@@ -19,24 +19,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Lägg till övning
 
-$(function () {
-  // Hantera klick på "Lägg till övning" för varje dag separat
-  $(".add-exercise").on("click", function () {
-      const $form = $(this).prev(".exercise-form");
-      const exerciseCount = $form.find("input[type='text']").length + 1;
+$(".add-exercise").on("click", function () {
+  const $form = $(this).prev(".exercise-form");
+  const exerciseCount = $form.find("input[type='text']").length + 1;
+  const dayId = $form.parent().attr("id"); // Hämta dagen för övningen
 
-      const newExercise = '<label for="exercise' + exerciseCount + '">Övning ' + exerciseCount + ':</label>' +
-          '<input type="text" name="exercise' + exerciseCount + '">' +
-          '<label for="sets' + exerciseCount + '">Set:</label>' +
-          '<input type="number" name="sets' + exerciseCount + '">' +
-          '<label for="reps' + exerciseCount + '">Reps:</label>' +
-          '<input type="number" name="reps' + exerciseCount + '">' +
-          '<label for="rest' + exerciseCount + '">Vila (sekunder):</label>' +
-          '<input type="number" name="rest' + exerciseCount + '">';
+  const newExercise = '<div class="exercise-container" id="exercise-' + dayId + '-' + exerciseCount + '" data-exercise="' + exerciseCount + '">' +
+      '<label for="exercise' + exerciseCount + '">Övning ' + exerciseCount + ':</label>' +
+      '<input type="text" name="exercise' + exerciseCount + '">' +
+      '<label for="sets' + exerciseCount + '">Set:</label>' +
+      '<input type="number" name="sets' + exerciseCount + '">' +
+      '<label for="reps' + exerciseCount + '">Reps:</label>' +
+      '<input type="number" name="reps' + exerciseCount + '">' +
+      '<label for="rest' + exerciseCount + '">Vila (sekunder):</label>' +
+      '<input type="number" name="rest' + exerciseCount + '">' +
+      '<button class="remove-icon" data-day="' + dayId + '" data-exercise="' + exerciseCount + '">' +
+      '<i class="fa-solid fa-eraser"></i>' +
+      '</button>' +
+      '</div>';
 
-      $form.append(newExercise);
-  });
+  $form.append(newExercise);
 });
+
+
 
 
 
@@ -93,14 +98,15 @@ document.getElementById("save-button-dag7").addEventListener("click", function()
 });
 
 
+// Lägg till lyssnare för "Ta bort övning"-ikonen för varje dag
+$(document).on("click", ".remove-icon", function () {
+  var dayId = $(this).attr("data-day");
+  var exerciseNumber = $(this).attr("data-exercise");
+  removeExercise(dayId, exerciseNumber);
+});
 
-
-
-
-
-
-
-
-
-
+function removeExercise(dayId, exerciseNumber) {
+  var $container = $("#exercise-" + dayId + '-' + exerciseNumber);
+  $container.remove();
+}
 

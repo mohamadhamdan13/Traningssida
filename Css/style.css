@@ -62,15 +62,15 @@ footer {
     margin-top: 2%; 
 }
 
-.save-button {
-    
-   
-}
-
 .save-button:hover {
-    background-color: #29c33e; 
+    background-color: #41de56; 
 }
 
 .add-exercise:hover {
-    background-color: #1a6fca;
+    background-color: #599ce3;
+}
+
+
+.remove-exercise:hover {
+    background-color: rgb(255, 73, 73);
 }
